@@ -1,0 +1,36 @@
+/* Intro: full-screen Spline only */
+.intro-wrap {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    cursor: pointer;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Scale wrapper — applied after Spline renders so it stays big on reload */
+.spline-scale {
+    width: 100%;
+    height: 100%;
+    transform: scale(1.55);
+    transform-origin: center center;
+}
+
+/* Main content reveal */
+.main-content {
+    animation: mainReveal 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes mainReveal {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
