@@ -462,3 +462,279 @@
         align-items: flex-start;
     }
 }
+
+/* ─── Serial Controls ───────────────────────────────────────────────────────── */
+.dash-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.serial-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1.2rem;
+    border-radius: 8px;
+    background: rgba(34, 197, 94, 0.15);
+    border: 1px solid rgba(34, 197, 94, 0.4);
+    color: #4ade80;
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.serial-btn:hover {
+    background: rgba(34, 197, 94, 0.3);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(34, 197, 94, 0.2);
+}
+
+.serial-btn-connected {
+    background: rgba(239, 68, 68, 0.15);
+    border-color: rgba(239, 68, 68, 0.4);
+    color: #f87171;
+}
+
+.serial-btn-connected:hover {
+    background: rgba(239, 68, 68, 0.3);
+    box-shadow: 0 4px 16px rgba(239, 68, 68, 0.2);
+}
+
+.serial-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #666;
+    display: inline-block;
+}
+
+.serial-dot.dot-live {
+    background: #4ade80;
+    box-shadow: 0 0 8px #4ade80;
+    animation: dotPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes dotPulse {
+    0%, 100% { opacity: 1; box-shadow: 0 0 4px #4ade80; }
+    50% { opacity: 0.6; box-shadow: 0 0 12px #4ade80, 0 0 24px rgba(74, 222, 128, 0.3); }
+}
+
+.serial-error {
+    padding: 0.6rem 2rem;
+    background: rgba(239, 68, 68, 0.15);
+    border-bottom: 1px solid rgba(239, 68, 68, 0.3);
+    color: #fca5a5;
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-align: center;
+    z-index: 40;
+    position: relative;
+}
+
+/* ─── Live dot in table header ──────────────────────────────────────────────── */
+.live-dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #ef4444;
+    margin-right: 0.5rem;
+    animation: livePulse 1s ease-in-out infinite;
+    vertical-align: middle;
+}
+
+@keyframes livePulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.6); }
+    50% { box-shadow: 0 0 0 6px rgba(239, 68, 68, 0); }
+}
+
+/* ─── Sparkline ─────────────────────────────────────────────────────────────── */
+.sparkline-svg {
+    width: 100%;
+    height: 32px;
+    margin-top: 0.4rem;
+    opacity: 0.7;
+}
+
+/* ─── Empty state actions ───────────────────────────────────────────────────── */
+.empty-actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-top: 0.5rem;
+}
+
+/* ─── Pulse ring for waiting state ──────────────────────────────────────────── */
+.pulse-ring {
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(34, 197, 94, 0.4);
+    border-radius: 50%;
+    animation: pulseRing 1.5s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+}
+
+@keyframes pulseRing {
+    0% { transform: scale(0.5); opacity: 1; }
+    100% { transform: scale(1.5); opacity: 0; }
+}
+
+/* ─── Theft Alert Banner ────────────────────────────────────────────────────── */
+.theft-banner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    padding: 0.8rem 2rem;
+    background: rgba(239, 68, 68, 0.2);
+    border-bottom: 2px solid rgba(239, 68, 68, 0.6);
+    color: #fca5a5;
+    font-size: 0.95rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 40;
+    animation: bannerFlash 1s ease-in-out infinite;
+}
+
+.theft-banner-icon {
+    font-size: 1.4rem;
+}
+
+@keyframes bannerFlash {
+    0%, 100% { background: rgba(239, 68, 68, 0.15); }
+    50% { background: rgba(239, 68, 68, 0.3); }
+}
+
+/* ─── ML Status Panel ───────────────────────────────────────────────────────── */
+.ml-status {
+    border-radius: 16px;
+    padding: 1.2rem 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.ml-training {
+    background: rgba(234, 179, 8, 0.1);
+    border-color: rgba(234, 179, 8, 0.3);
+}
+
+.ml-safe {
+    background: rgba(34, 197, 94, 0.1);
+    border-color: rgba(34, 197, 94, 0.3);
+}
+
+.ml-alert {
+    background: rgba(239, 68, 68, 0.15);
+    border-color: rgba(239, 68, 68, 0.4);
+    animation: alertPulse 1.2s ease-in-out infinite;
+}
+
+.ml-status-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.ml-status-icon {
+    font-size: 2rem;
+    line-height: 1;
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.3));
+}
+
+.ml-status-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    flex: 1;
+}
+
+.ml-status-title {
+    font-size: 1rem;
+    font-weight: 800;
+    color: #e2f0e6;
+}
+
+.ml-training .ml-status-title {
+    color: #fde047;
+}
+
+.ml-alert .ml-status-title {
+    color: #f87171;
+}
+
+.ml-status-sub {
+    font-size: 0.78rem;
+    color: #86efac;
+    opacity: 0.8;
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+}
+
+.ml-training .ml-status-sub {
+    color: #fde68a;
+}
+
+.ml-alert .ml-status-sub {
+    color: #fca5a5;
+}
+
+.ml-retrain-btn {
+    padding: 0.45rem 1rem;
+    border-radius: 8px;
+    background: rgba(34, 197, 94, 0.2);
+    border: 1px solid rgba(34, 197, 94, 0.4);
+    color: #4ade80;
+    font-size: 0.78rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+
+.ml-retrain-btn:hover {
+    background: rgba(34, 197, 94, 0.35);
+    transform: translateY(-1px);
+}
+
+/* ML Progress Bar */
+.ml-progress-bar {
+    margin-top: 0.8rem;
+    height: 6px;
+    border-radius: 3px;
+    background: rgba(234, 179, 8, 0.15);
+    overflow: hidden;
+}
+
+.ml-progress-fill {
+    height: 100%;
+    border-radius: 3px;
+    background: linear-gradient(90deg, #eab308, #fde047);
+    transition: width 0.5s ease;
+    box-shadow: 0 0 10px rgba(234, 179, 8, 0.4);
+}
+
+/* ─── Theft Log Panel ───────────────────────────────────────────────────────── */
+.theft-log-panel {
+    border-color: rgba(239, 68, 68, 0.3) !important;
+}
+
+.theft-log-title {
+    color: #f87171 !important;
+}
+
+.alert-count {
+    background: rgba(239, 68, 68, 0.2) !important;
+    border-color: rgba(239, 68, 68, 0.3) !important;
+    color: #f87171 !important;
+}
+
+.theft-event-row td {
+    color: #fca5a5 !important;
+    border-bottom-color: rgba(239, 68, 68, 0.1) !important;
+}
+
+.theft-event-row:hover td {
+    background: rgba(239, 68, 68, 0.1) !important;
+}
